@@ -4,6 +4,7 @@ var app = express()
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
+// Main landing page
 app.get('/', function(req, res) {
 
     // Sample vars (to be replaced with DB calls)
@@ -20,4 +21,10 @@ app.get('/', function(req, res) {
     });
 });
 
+// About page
+app.get('/about', function(req, res) {
+    res.render('pages/about');
+});
+
+// Tells the app which port to run on
 app.listen(8080);
