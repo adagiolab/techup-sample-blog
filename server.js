@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Needed for parsing form data
 app.use(express.json());       
-app.use(express.urlencoded({extended: true})); 
+app.use(express.urlencoded({extended: true}));
 
 // Needed for Prisma to connect to database
 const { PrismaClient } = require('@prisma/client')
@@ -46,17 +46,16 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-// New page
+// New post page
 app.get('/new', function(req, res) {
     res.render('pages/new');
 });
 
-// Submit button clicked on new page
+// Create a new post
 app.post('/new', async function(req, res) {
     
     // Try-Catch for any errors
     try {
-        
         // Get the title and content from submitted form
         const { title, content } = req.body;
 
@@ -73,14 +72,29 @@ app.post('/new', async function(req, res) {
             // Redirect back to the homepage
             res.redirect('/');
         }
-        
-        
       } catch (error) {
         console.log(error);
         res.render('pages/new');
       }
+
 });
 
+// Delete a post by id
+app.post("/delete/:id", async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+        await prisma.post.delete({
+            where: { id: parseInt(id) },
+        });
+      
+        // Redirect back to the homepage
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+  });
 
 // Tells the app which port to run on
 app.listen(8080);

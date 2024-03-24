@@ -15,7 +15,8 @@ Stuff to install:
 
 Deployment:
 - Must use port 10000 for Render (oh wait you dont need to lol. Yup double confirmed no need)
-- Build command change to `yarn; npx prisma generate`
+- Build command change to `yarn; npx prisma db push; npx prisma generate`
+- Still need to check how to run migrations if no exsiting db
 
 Note to self:
 - partials to be introduced during hands on? or much much later in the programme
