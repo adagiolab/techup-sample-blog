@@ -4,18 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="/css/style.css" >
 </head>
 <body>
-    <%- include('../partials/header'); %>
+    <main class="container">
+        <!-- Navbar which can be reused across other pages -->
+        <%- include('../partials/navbar'); %>
 
-    <h4><%= tagline %></h4>
-    <br>
+        <!-- Information welcoming visitors to my page -->
+        <div class="welcome-container">
+            <h1>Welcome to my blog</h1>
+            <h2>Learn about what happened in my day!</h2>
+        </div>
 
-    <% mascots.forEach(mascot => { %>
-        <h2>Mascot Name: <%= mascot.name %></h2>
-        <p><b>Organizaiton: <%= mascot.organization %></b></p>
-        <p><i>Birth Year: <%= mascot.birth_year %></i></p>
-        <br>
-    <% }); %>
+        <div class="new-post-container">
+           <a href="/new" class="button">+ New Post</a>
+        </div>
+
+        <!-- Example of an individual blog post -->
+        <article class="post-container">
+            <h3>Title of Post</h3>
+            <p>The actual content of the post</p>
+        </article>
+
+        <!-- Example of an individual blog post -->
+        <article class="post-container">
+            <h3>Title of Post</h3>
+            <p>The actual content of the post</p>
+        </article>
+
+        <!-- <% mascots.forEach(mascot => { %>
+            <h2>Mascot Name: <%= mascot.name %></h2>
+            <p><b>Organizaiton: <%= mascot.organization %></b></p>
+            <p><i>Birth Year: <%= mascot.birth_year %></i></p>
+            <br>
+        <% }); %> -->
+    </main>
 </body>
 </html>
