@@ -22,11 +22,13 @@
            <a href="/new" class="button">+ New Post</a>
         </div>
 
-        <!-- Example of an individual blog post -->
-        <article class="post-container">
-            <h3><%= blogs.title %></h3>
-            <p><%= blogs.content %></p>
-        </article>
+        <!-- Show blog posts -->
+        <% blogs.forEach(post => { %>
+            <article class="post-container">
+                <h3><%= post.title %></h3>
+                <p><%= post.content %></p>
+            </article>
+        <% }); %>
 
         <!-- Example of an individual blog post -->
         <article class="post-container">
