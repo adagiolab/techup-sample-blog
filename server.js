@@ -15,11 +15,20 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.json());       
 app.use(express.urlencoded({extended: true})); 
 
+// Needed for Prisma to connect to database
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 
 // Main landing page
-app.get('/', function(req, res) {
-
-    res.render('pages/home');
+app.get('/', async function(req, res) {
+    try {
+        const blogs = await prisma.post.findMany();
+        // await res.render('pages/home', { blogs: blogs });
+        await res.render('pages/home', { blogs: {id: 1, title: "hi", content: "bye"} });
+      } catch (error) {
+        res.render('pages/home');
+        console.log(error);
+      } 
 });
 
 // About page
