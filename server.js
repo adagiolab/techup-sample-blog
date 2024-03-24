@@ -26,5 +26,9 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
+app.get('/new', function(req, res) {
+    res.render('pages/new');
+});
+
 // Tells the app which port to run on
 app.listen(8080);

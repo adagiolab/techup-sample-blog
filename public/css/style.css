@@ -5,7 +5,7 @@
     margin-bottom: 50px;
 }
 
-.new-post-container{
+.new-post-btn-container{
     text-align: center;
 
     margin-top: 50px;
@@ -30,4 +30,12 @@
 
 .about-container > img{
     margin-bottom: 40px;
+}
+
+.create-post-container{
+    
+}
+
+.cancel-create-post {
+    text-align: center;
 }
