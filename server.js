@@ -1,3 +1,7 @@
+// Needed for dotenv
+require("dotenv").config();
+
+// Needed for Express
 var express = require('express')
 var app = express()
 
@@ -10,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
 // Needed for parsing form data
 app.use(express.json());       
 app.use(express.urlencoded({extended: true})); 
+
 
 // Main landing page
 app.get('/', function(req, res) {
@@ -35,6 +40,7 @@ app.post('/new', function(req, res) {
     // Loads the homepage
     res.render('pages/home');
 });
+
 
 // Tells the app which port to run on
 app.listen(8080);
