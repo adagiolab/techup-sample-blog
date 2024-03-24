@@ -7,5 +7,15 @@
 </head>
 <body>
     <%- include('../partials/header'); %>
+
+    <h4><%= tagline %></h4>
+    <br>
+
+    <% mascots.forEach(mascot => { %>
+        <b>Mascot Name: <%= mascot.name %></b>
+        <p>Organizaiton: <%= mascot.organization %></p>
+        <p>Birth Year: <%= mascot.birth_year %></p>
+        <br>
+    <% }); %>
 </body>
 </html>
