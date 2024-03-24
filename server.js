@@ -1,24 +1,20 @@
 var express = require('express')
 var app = express()
 
+// Needed for EJS
 app.set('view engine', 'ejs');
+
+// Needed for public directory
 app.use(express.static(__dirname + '/public'));
+
+// Needed for parsing form data
+app.use(express.json());       
+app.use(express.urlencoded({extended: true})); 
 
 // Main landing page
 app.get('/', function(req, res) {
 
-    // Sample vars (to be replaced with DB calls)
-    var mascots = [
-        { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-        { name: 'Tux', organization: "Linux", birth_year: 1996},
-        { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-      ];
-    var tagline = "No programming concept is complete without a cute animal mascot.";
-
-    res.render('pages/home', {
-        mascots: mascots,
-        tagline: tagline
-    });
+    res.render('pages/home');
 });
 
 // About page
@@ -26,8 +22,18 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
+// New page
 app.get('/new', function(req, res) {
     res.render('pages/new');
+});
+
+// Submit button clicked on new page
+app.post('/new', function(req, res) {
+    console.log(req.body.title);
+    console.log(req.body.content);
+    
+    // Loads the homepage
+    res.render('pages/home');
 });
 
 // Tells the app which port to run on
